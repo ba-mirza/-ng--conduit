@@ -7,7 +7,6 @@ import {
   isSubmittingSelector,
   validationErrorsSelector,
 } from '../../store/selectors';
-import {AuthService} from '../../services/auth.service';
 import {RegisterRequestInterface} from '../../types/registerRequest.interface';
 import {BackendErrorsInterface} from '../../../shared/types/backendErrors.interface';
 
