@@ -19,8 +19,8 @@ export class RegisterEffect {
           map((currentUser: CurrentUserInterface) => {
             return registerSuccessAction({currentUser});
           }),
-          catchError(() => {
-            return of(registerFailureAction());
+          catchError(({error}) => {
+            return of(registerFailureAction({errors: error.errors}));
           })
         );
       })
