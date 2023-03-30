@@ -23,7 +23,7 @@ export class LoginEffect {
             return loginSuccessAction({currentUser});
           }),
           catchError(({error}) => {
-            return of(loginSFailureAction({errors: error}));
+            return of(loginSFailureAction({errors: error.errors}));
           })
         );
       })
@@ -33,6 +33,7 @@ export class LoginEffect {
   redirectAfterSubmit$ = createEffect(
     () =>
       this.actions$.pipe(
+        ofType(loginSuccessAction),
         tap(() => {
           this.router.navigateByUrl('/');
         })
