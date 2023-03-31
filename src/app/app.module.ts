@@ -1,16 +1,19 @@
 import {NgModule, isDevMode} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
+import {AuthModule} from './auth/auth.module';
+import {GlobalFeedModule} from './globalFeed/globalFeed.module';
+import {TopBarModule} from './shared/modules/topBar/topBar.module';
+
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {AuthModule} from './auth/auth.module';
 import {StoreModule} from '@ngrx/store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {EffectsModule} from '@ngrx/effects';
-import {TopBarModule} from './shared/modules/topBar/topBar.module';
 import {PersistanceService} from './shared/services/persistance.service';
 import {Authinterceptor} from './shared/services/authinterceptor.service';
+
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +26,7 @@ import {Authinterceptor} from './shared/services/authinterceptor.service';
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
     EffectsModule.forRoot([]),
     TopBarModule,
+    GlobalFeedModule,
   ],
   providers: [
     PersistanceService,
